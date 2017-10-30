@@ -1,52 +1,48 @@
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+$( document ).ready(function(){
 
-<script type="text/javascript">
+var targetNumber = 19 + Math.floor(Math.random() * 100);
 
-var targetNumber = 372;
+  $("#number-to-guess").text(targetNumber);
 
-$("#number-to-guess").text(targetNumber);
-
-var counter = 0;
+  var counter = 0;
 
 
-var numberOptions = [50, 20, 2, 5];
+  var numberOptions = [50, 20, 1, 5];
 
-for (var i = 0; i < numberOptions.length; i++) {
-
-
-  var imageCrystal1 = $("<img>");
-
-  imageCrystal1.addClass("crystal-image1");
+  for (var i = 0; i < numberOptions.length; i++) {
 
 
-  imageCrystal1.attr("src", "./assets/images/blueCrystal.jpg");
+    var imageCrystal1 = $("<img>");
 
-  imageCrystal1.attr("data-crystalvalue", numberOptions[i]);
-
-  $("#crystals").append(imageCrystal1);
-};
-
-$(".crystal-image1").on("click", function() {
+    imageCrystal1.addClass("crystal-image");
 
 
-  var crystalValue = ($(this).attr("data-crystalvalue"));
-  crystalValue = parseInt(crystalValue);
+    imageCrystal1.attr("src", "./assets/images/blueCrystal.jpg");
 
-  counter += crystalValue;
+    imageCrystal1.attr("data-crystalvalue", numberOptions[i]);
 
+    $("#crystals").append(imageCrystal1);
+  };
 
-  alert("New score: " + counter);
-
-  if (counter === targetNumber) {
-    alert("You win!");
-  }
-
-  else if (counter >= targetNumber) {
-    alert("You lose!!");
-  }
-
-});
+  $(".crystal-image").on("click", function() {
 
 
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
 
-</script>
+    counter += crystalValue;
+
+
+    alert("New score: " + counter);
+
+    if (counter === targetNumber) {
+      alert("You win!");
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+    };
+    console.log(this);
+
+  });
+})
